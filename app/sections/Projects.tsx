@@ -56,8 +56,8 @@ const Projects = () => {
   return (
     <Box
       id="projects"
-      height="90vh"
-      bg={colors.cream}
+      height="150vh"
+      bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
       display="flex"
@@ -68,10 +68,10 @@ const Projects = () => {
         <Heading as="h2" size="xl" mb={6}>
           Projects
         </Heading>
-        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10} ref={ref}>
+        <SimpleGrid columns={{ sm: 1, md: 1 }} spacing={10} ref={ref}>
           {trail.map((animation, index) => (
             <animated.div key={projects[index].title} style={animation}>
-              <Box boxShadow="md" p="6" rounded="md" bg="white">
+              <Box boxShadow="md" p="6" rounded="md" bg={colors.cream}>
                 <Heading as="h3" size="md" mb={4}>{projects[index].title}</Heading>
                 <Text fontSize="md" mb={4}>
                   {projects[index].description}

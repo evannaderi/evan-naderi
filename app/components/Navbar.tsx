@@ -19,7 +19,7 @@ const Navbar = () => {
       height="10vh"
     >
       {/* Name on the left with a cool font */}
-      <Text fontSize="2xl" fontFamily="'Cool Font Name', sans-serif">
+      <Text fontSize="2xl" fontFamily="sans-serif" fontWeight="bold">
         Evan Naderi
       </Text>
 

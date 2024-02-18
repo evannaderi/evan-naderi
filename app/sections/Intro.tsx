@@ -1,4 +1,4 @@
-// evan-naderi/app/sections/About.tsx
+// evan-naderi/app/sections/Intro.tsx
 'use client';
 
 import React from 'react';
@@ -72,25 +72,6 @@ const About = () => {
           </animated.div>
         ))}
       </Container>
-      <button onClick={() => {
-        fetch('/api/agent', {
-          method: 'POST',
-          body: JSON.stringify({ message: 'What color is a penguin' }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response from the API
-          console.log(data);
-          alert(data.response);
-        })
-        .catch(error => {
-          // Handle any errors
-          console.error(error);
-        });
-      }}>Call Agent API</button>
     </Box>
   );
 };

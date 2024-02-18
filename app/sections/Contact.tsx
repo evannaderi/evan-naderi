@@ -9,7 +9,7 @@ const Contact = () => {
     <Box
       id="contact"
       height="90vh"
-      bg={colors.cream} // Using theme color
+      bg={colors.gradientExample} // Using theme color
       color={colors.liver} // Using theme color for text
       scrollMarginTop="10vh"
       display="flex"
