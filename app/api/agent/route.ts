@@ -66,7 +66,9 @@ export async function POST(request: Request) {
 
     const llmChain = prompt.pipe(chatModel).pipe(outputParser);
 
-    const loader = new PDFLoader("public/Evan_Naderi_resume.pdf", {
+    const path = process.env.NODE_ENV === 'development' ? "public/Evan_Naderi_resume.pdf" : "/Evan_Naderi_resume.pdf";
+
+    const loader = new PDFLoader(path, {
       splitPages: false, // Optional, to load the entire PDF as a single document
     });
 
