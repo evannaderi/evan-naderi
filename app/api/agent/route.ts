@@ -19,6 +19,7 @@ import { pull } from "langchain/hub";
 import { createOpenAIFunctionsAgent, AgentExecutor } from "langchain/agents";
 import { WebPDFLoader } from "langchain/document_loaders/web/pdf";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+const path = require('path');
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -66,9 +67,11 @@ export async function POST(request: Request) {
 
     const llmChain = prompt.pipe(chatModel).pipe(outputParser);
 
-    const path = process.env.NODE_ENV === 'development' ? "public/Evan_Naderi_resume.pdf" : "/Evan_Naderi_resume.pdf";
+    const filePath = process.env.NODE_ENV === 'development'
+    ? path.join(__dirname, "public", "Evan_Naderi_resume.pdf") // For local development
+    : path.join(__dirname, "Evan_Naderi_resume.pdf"); // For Vercel production
 
-    const loader = new PDFLoader(path, {
+    const loader = new PDFLoader(filePath, {
       splitPages: false, // Optional, to load the entire PDF as a single document
     });
 
