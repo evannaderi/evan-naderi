@@ -6,6 +6,7 @@ import { Box, Container, Heading, Text, useMediaQuery } from '@chakra-ui/react';
 import colors from '../../theme/theme';
 import { useSpring, animated, useTrail } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
+import Chatbot from './Chatbot';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -28,9 +29,9 @@ const About = () => {
 
   // Trail animation for each line of Text
   const textLines = [
-    "Hey! I'm Evan, and I'm passionate about utilizing AI and technology to help improve people's lives.",
+    "Hey! I'm Evan, and I'm passionate about utilizing AI and technology to help improve people's lives\n.",
     "I'm currently a third year Computer Science student at UCF,",
-    "and I am part of a research lab at the Institute of Modelling and Simulation.",
+    "and I work at the S.M.A.R.T. lab at the Institute of Modelling and Simulation where I do Software Development/AI work.",
     "Scroll to see some of my projects!",
   ];
 
@@ -72,25 +73,7 @@ const About = () => {
           </animated.div>
         ))}
       </Container>
-      <button onClick={() => {
-        fetch('/api/agent', {
-          method: 'POST',
-          body: JSON.stringify({ message: 'What color is a penguin' }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response from the API
-          console.log(data);
-          alert(data.response);
-        })
-        .catch(error => {
-          // Handle any errors
-          console.error(error);
-        });
-      }}>Call Agent API</button>
+      <Chatbot />
     </Box>
   );
 };

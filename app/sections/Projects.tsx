@@ -2,43 +2,78 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Heading, SimpleGrid, Text, useMediaQuery, Button } from '@chakra-ui/react';
+import { Box, Container, Heading, SimpleGrid, Text, useMediaQuery, Button, Badge } from '@chakra-ui/react';
 import colors from '../../theme/theme';
 import { useTrail, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
+import { Link } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: false, // Only trigger the animation once when the projects come into view
-    threshold: 0.5, // Trigger when 10% of the projects section is in view
+    threshold: 0.3, // Trigger when 10% of the projects section is in view
   });
 
   const projects = [
     {
       title: 'LinguaFluent AI',
-      description: 'An advanced language learning chatbot utilizing OpenAI and GCP for multilingual role-plays.',
+      description: 'An advanced language learning chatbot utilizing OpenAI and GCP for multilingual role-plays. Implements a spaced repetition algorithm to reinforce words in coversational contexts. Includes word definitions, explanations, saved words, and review word functionalities. Choose from any role-play scenario, and learn up to 6 different languages.',
       link: 'https://linguafluent.vercel.app',
+      github: 'https://github.com/evannaderi/chinese-companion',
+      skills: ['Next.js', 'React', 'Vercel', 'OpenAI', 'GCP', 'Node.js', 'MaterialUI'], 
       bg: colors.liver,
       hoverBg: colors.burntSienna,
     },
     {
-      title: 'Employee Scheduling App',
+      title: 'Metadash',
+      description: 'A full-stack teacher dashboard for processing and analyzing students\' multimodal data. Based on self-regulated learning theories, delivers intuitive and aesthetic data visualizations of students cognitive processes to teachers in real-time.',
+      link: '', // No link provided for this project,
+      skills: ['Angular', 'Nest.js', 'D3.js', 'MySQL'], 
+      bg: colors.liver,
+      hoverBg: colors.sunset,
+    },
+    {
+      title: 'Sched - Employee Scheduling',
       description: 'A comprehensive employee scheduling web and mobile application enabling dynamic shift scheduling and real-time updates.',
-      link: 'https://large.poosd-project.com',
+      link: '',
+      github: 'https://github.com/evannaderi/Sched',
+      skills: ['MongoDB', 'React', 'Node.js', 'Flutter', 'Mongoose', 'MaterialUI'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
     },
     {
       title: 'LegAI Virtual Legal Assistant',
       description: 'An AI-powered legal assistant that extracts and summarizes case-relevant information.',
-      link: 'https://github.com/evannaderi/Epic-Law',
+      link: '',
+      github: 'https://github.com/evannaderi/Epic-Law',
+      skills: ['LangChain', 'Python', 'PostgreSQL', 'OpenAI', 'GCP'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
     },
     {
       title: 'Sentiment Analysis Classifier',
       description: 'A DistilBERT-based NLP classifier for sentiment analysis, achieving significant performance improvements with a 63% accuracy rate on the Hugging Face "emotion" dataset.',
-      link: '', // No link provided for this project
+      link: '', // No link provided for this project,
+      skills: ['Pytorch', 'Sklearn', 'Flask', 'Heroku', 'Hugging Face'], 
+      bg: colors.liver,
+      hoverBg: colors.sunset,
+    },
+    {
+      title: 'Metadash Prototype',
+      description: 'A prototype teacher dashboard for analyzing students\' multimodal data.',
+      link: '',
+      github: 'https://github.com/evannaderi/metadash', // No link provided for this project
+      skills: ['Dash', 'Plotly', 'Python', 'Flask'], 
+      bg: colors.liver,
+      hoverBg: colors.sunset,
+    },
+    {
+      title: 'Personal Portfolio With Chatbot',
+      description: 'An aesthetic and dynamic personal portfolio that utilizes react-spring for animations. Inclused a personalized chatbot assistant that allows user to chat with resume through vectorized embeddings.',
+      link: '',
+      github: 'https://github.com/evannaderi/metadash', // No link provided for this project
+      skills: ['Langchain', 'Next.js', 'react-spring', 'Chakra UI'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
     },
@@ -53,10 +88,32 @@ const Projects = () => {
     config: { mass: 5, tension: 2000, friction: 200 },
   });
 
+  const renderSkills = (skills: string[]) => {
+    return (
+      <Box d="flex" flexWrap="wrap" gap="10px">
+        {skills.map((skill, index) => (
+          <Badge
+            key={index}
+            px="3"
+            py="1"
+            borderRadius="lg"
+            fontSize="0.8em" // Adjust the font size as needed
+            fontWeight="bold" // Make text bold
+            colorScheme="teal" // Use a color scheme or specify custom colors
+            variant="solid"
+            bgGradient="linear(to-r, #BC6C25, #BC6C25, #E1CE7A)" // Example of a gradient background
+          >
+            {skill}
+          </Badge>
+        ))}
+      </Box>
+    );
+  };
+
   return (
     <Box
       id="projects"
-      height="150vh"
+      height="280vh"
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
@@ -75,20 +132,36 @@ const Projects = () => {
                 <Heading as="h3" size="md" mb={4}>{projects[index].title}</Heading>
                 <Text fontSize="md" mb={4}>
                   {projects[index].description}
-                </Text>
+                </Text> 
+                {renderSkills(projects[index].skills)}
                 {projects[index].link && (
-                  <Button
-                    mt={4}
-                    bg={projects[index].bg}
-                    color="white"
-                    _hover={{ bg: projects[index].hoverBg }}
-                    as="a"
-                    href={projects[index].link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Go to Website
-                  </Button>
+                    <Button
+                      mt={4}
+                      mr={2} // Add margin-right of 2 units
+                      bg={projects[index].bg}
+                      color="white"
+                      _hover={{ bg: projects[index].hoverBg }}
+                      as="a"
+                      href={projects[index].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Try it <ExternalLinkIcon mx='2px' />
+                    </Button>
+                  )}
+                  {projects[index].github && (
+                    <Button
+                      mt={4}
+                      bg={projects[index].bg}
+                      color="white"
+                      _hover={{ bg: projects[index].hoverBg }}
+                      as="a"
+                      href={projects[index].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Github <ExternalLinkIcon mx='2px' />
+                    </Button>
                 )}
               </Box>
             </animated.div>

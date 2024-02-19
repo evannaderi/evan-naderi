@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import colors from '../../theme/theme';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
   return (

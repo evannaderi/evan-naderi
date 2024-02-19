@@ -17,8 +17,6 @@ import { createRetrieverTool } from "langchain/tools/retriever";
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { pull } from "langchain/hub";
 import { createOpenAIFunctionsAgent, AgentExecutor } from "langchain/agents";
-import { WebPDFLoader } from "langchain/document_loaders/web/pdf";
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -33,28 +31,6 @@ export async function POST(request: Request) {
     console.log('HIII');
     console.log('OpenAI API Key:', process.env.OPENAI_API_KEY);
 
-    // const messages = [
-    //   new HumanMessage("Is Evan a software dev?"),
-    //   new AIMessage("Yes!"),
-    // ];
-
-    const data = await request.json();
-    console.log('data:', data);
-    const inputMessages = data.messages;
-    const input = data.input;
-
-    let messages = [];
-    for (let msg of inputMessages) {
-      if (msg.type === 'user') {
-        messages.push(new HumanMessage(msg.content));
-      } else {
-        messages.push(new AIMessage(msg.content));
-      }
-    };
-
-    console.log(messages);
-        
-
     const prompt = ChatPromptTemplate.fromMessages([
       ["system", "Respond in spanish."],
       ["user", "{input}"],
@@ -66,9 +42,9 @@ export async function POST(request: Request) {
 
     const llmChain = prompt.pipe(chatModel).pipe(outputParser);
 
-    const loader = new PDFLoader("public/Evan_Naderi_resume.pdf", {
-      splitPages: false, // Optional, to load the entire PDF as a single document
-    });
+    const loader = new CheerioWebBaseLoader(
+      "http://evannaderi.com/resume.pdf"
+    );
 
     const docs = await loader.load();
 
@@ -137,7 +113,7 @@ export async function POST(request: Request) {
     const historyAwareRetrievalPrompt = ChatPromptTemplate.fromMessages([
       [
         "system",
-        "Answer the user's questions based on the below context. Keep your response to 1-2 sentences:\n\n{context}",
+        "Answer the user's questions based on the below context:\n\n{context}",
       ],
       new MessagesPlaceholder("chat_history"),
       ["user", "{input}"],
@@ -154,8 +130,11 @@ export async function POST(request: Request) {
     });
 
     const response = await conversationalRetrievalChain.invoke({
-      chat_history: messages,
-      input: input,
+      chat_history: [
+        new HumanMessage("Is Evan a software dev?"),
+        new AIMessage("Yes!"),
+      ],
+      input: "What is Evan's experience?",
     });
 
     const retrieverTool = await createRetrieverTool(retriever, {
@@ -203,6 +182,10 @@ export async function POST(request: Request) {
 
     console.log('Type of request:', typeof request);
     console.log('request:', request.body);
+    const data = await request.json();
+    console.log('data:', data);
+    const { message } = data;
+    console.log('message:', message);
 
     // const response = await llmChain.invoke({
     //   input: message,
