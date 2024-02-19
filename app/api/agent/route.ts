@@ -68,8 +68,8 @@ export async function POST(request: Request) {
     const llmChain = prompt.pipe(chatModel).pipe(outputParser);
 
     const filePath = process.env.NODE_ENV === 'development'
-    ? path.join(__dirname, "public", "Evan_Naderi_resume.pdf") // For local development
-    : path.join(__dirname, "Evan_Naderi_resume.pdf"); // For Vercel production
+  ? path.join(process.cwd(), 'public', 'Evan_Naderi_resume.pdf') // Development path
+  : path.join(process.cwd(), 'data', 'Evan_Naderi_resume.pdf'); // Production path
 
     const loader = new PDFLoader(filePath, {
       splitPages: false, // Optional, to load the entire PDF as a single document
