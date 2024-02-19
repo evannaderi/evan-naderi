@@ -36,7 +36,7 @@ const Navbar = () => {
         {/* Directly link to the resume PDF for the 'resume' item */}
         <Box
           as="a"
-          href="http://evannaderi.com/resume.pdf"
+          href="/Evan_Naderi_resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           cursor="pointer"

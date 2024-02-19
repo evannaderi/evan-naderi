@@ -1,7 +1,7 @@
 // evan-naderi/app/sections/Chatbot.tsx
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, VStack, Text, Input, Button, useToast, HStack, Spinner } from '@chakra-ui/react';
+import { Box, VStack, Text, Input, Button, useToast, HStack, Spinner, Link } from '@chakra-ui/react';
 import colors from '../../theme/theme';
 import { IoMdSend } from 'react-icons/io';
 import { Icon } from '@chakra-ui/react';
@@ -98,7 +98,15 @@ const Chatbot: React.FC = () => {
 
     return (
         <VStack align="stretch" w="50vh" h="80vh" spacing={4} overflowY="auto" bg={adjustedColors.background} p={4} boxShadow="md" borderRadius="lg">
-            <Text fontSize="xl" fontWeight="bold" textAlign="center">Chat with My Resume <ExternalLinkIcon /></Text>
+            <Text fontSize="xl" fontWeight="bold" textAlign="center">
+                Chat with My Resume
+                <Link href="/Evan_Naderi_resume.pdf" isExternal>
+                    <ExternalLinkIcon mx="2px" />
+                </Link>
+            </Text>
+            <Text fontSize="sm" fontWeight="bold" textAlign="center" color="gray.500" mt={-3}>
+                Built with Langchain
+            </Text>
             <VStack ref={chatboxRef} flex={1} align="stretch" spacing={4} overflowY="auto">
                 {messages.map((message, index) => (
                     <Box
