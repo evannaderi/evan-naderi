@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
     "axios": "^1.6.7",
     "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.4",
     "langchain": "^0.1.20",
     "next": "14.1.0",
     "pdf-parse": "^1.1.1",
