@@ -12,7 +12,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: false, // Only trigger the animation once when the projects come into view
-    threshold: 0.3, // Trigger when 10% of the projects section is in view
+    threshold: 0.25, // Trigger when 10% of the projects section is in view
   });
 
   const projects = [
