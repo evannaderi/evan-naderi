@@ -59,7 +59,7 @@ const About = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Container maxW="container.md" textAlign="isLargerThan768 ? 'left' : 'center'">
+      <Container maxW="container.md" textAlign={{ base: 'center', md: 'left' }}>
         <animated.div style={headingAnimation} ref={ref}>
           <Heading as="h2" size="xl" mb={6}>
             About Me

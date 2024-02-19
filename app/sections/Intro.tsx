@@ -58,19 +58,7 @@ const About = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <Container maxW="container.md" textAlign="isLargerThan768 ? 'left' : 'center'">
-        <animated.div style={headingAnimation} ref={ref}>
-          <Heading as="h2" size="xl" mb={6}>
-            About Me
-          </Heading>
-        </animated.div>
-        {textAnimation.map((props, index) => (
-          <animated.div key={index} style={props}>
-            <Text fontSize="24" lineHeight="tall">
-              {textLines[index]}
-            </Text>
-          </animated.div>
-        ))}
+      <Container maxW="container.md" textAlign={{ base: 'center', md: 'left' }}>
       </Container>
     </Box>
   );

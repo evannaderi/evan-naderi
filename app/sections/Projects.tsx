@@ -90,7 +90,7 @@ const Projects = () => {
 
   const renderSkills = (skills: string[]) => {
     return (
-      <Box d="flex" flexWrap="wrap" gap="10px">
+      <Box flexWrap="wrap" gap="10px">
         {skills.map((skill, index) => (
           <Badge
             key={index}
