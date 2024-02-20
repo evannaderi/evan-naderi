@@ -29,6 +29,7 @@ const Projects = () => {
       title: 'Metadash',
       description: 'A full-stack teacher dashboard for processing and analyzing students\' multimodal data. Based on self-regulated learning theories, delivers intuitive and aesthetic data visualizations of students cognitive processes to teachers in real-time.',
       link: '', // No link provided for this project,
+      github: '', // No link provided for this project
       skills: ['Angular', 'Nest.js', 'D3.js', 'MySQL'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
@@ -55,6 +56,7 @@ const Projects = () => {
       title: 'Sentiment Analysis Classifier',
       description: 'A DistilBERT-based NLP classifier for sentiment analysis, achieving significant performance improvements with a 63% accuracy rate on the Hugging Face "emotion" dataset.',
       link: '', // No link provided for this project,
+      github: '', // No link provided for this project
       skills: ['Pytorch', 'Sklearn', 'Flask', 'Heroku', 'Hugging Face'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
@@ -72,7 +74,7 @@ const Projects = () => {
       title: 'Personal Portfolio With Chatbot',
       description: 'An aesthetic and dynamic personal portfolio that utilizes react-spring for animations. Inclused a personalized chatbot assistant that allows user to chat with resume through vectorized embeddings.',
       link: '',
-      github: 'https://github.com/evannaderi/metadash', // No link provided for this project
+      github: 'https://github.com/evannaderi/evan-naderi', // No link provided for this project
       skills: ['Langchain', 'Next.js', 'react-spring', 'Chakra UI'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
@@ -156,7 +158,7 @@ const Projects = () => {
                       color="white"
                       _hover={{ bg: projects[index].hoverBg }}
                       as="a"
-                      href={projects[index].link}
+                      href={projects[index].github}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

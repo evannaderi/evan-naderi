@@ -99,7 +99,7 @@ const Chatbot: React.FC = () => {
     return (
         <VStack align="stretch" w="50vh" h="80vh" spacing={4} overflowY="auto" bg={adjustedColors.background} p={4} boxShadow="md" borderRadius="lg">
             <Text fontSize="xl" fontWeight="bold" textAlign="center">
-                Chat with My Resume
+                Chat with Resume
                 <Link href="/Evan_Naderi_resume.pdf" isExternal>
                     <ExternalLinkIcon mx="2px" />
                 </Link>
