@@ -10,6 +10,7 @@ import Resume from './sections/Resume';
 import colors from '../theme/theme';
 
 export default function Home() {
+  
   return (
     <ChakraProvider>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
@@ -17,7 +18,6 @@ export default function Home() {
       <Box pt="5rem">
         <About />
         <Projects />
-        <Experience />
         <Contact />
       </Box>
     </ChakraProvider>

@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer';
 const Experience = () => {
   const experiences = [
     {
-      title: 'Research Assistant',
+      title: 'Software Development/AI Intern/Researcher',
       place: 'S.M.A.R.T. Lab, UCF - May 2023 – Present',
       details: [
         'Utilized Angular, Nest.js, and D3.js to develop MetaDash, an intuitive multimodal data visualization app.',

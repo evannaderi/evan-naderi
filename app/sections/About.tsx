@@ -11,7 +11,7 @@ import Chatbot from './Chatbot';
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.5,
+    threshold: 0.1,
   });
 
   // Animation for the Heading

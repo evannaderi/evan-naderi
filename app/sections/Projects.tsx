@@ -8,8 +8,10 @@ import { useTrail, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import { Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { useEffect, useState } from 'react';
 
 const Projects = () => {
+  const [isMinimized, setIsMinimized] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: false, // Only trigger the animation once when the projects come into view
     threshold: 0.25, // Trigger when 10% of the projects section is in view
@@ -112,10 +114,30 @@ const Projects = () => {
     );
   };
 
+  useEffect(() => {
+        const checkScreenSize = () => {
+            if (window.innerWidth < 768) { // For example, minimize if screen width is less than 768px
+                setIsMinimized(true);
+            } else {
+                setIsMinimized(false);
+            }
+        };
+
+        checkScreenSize();
+
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+    };
+
   return (
     <Box
       id="projects"
-      height="280vh"
+      height={isMinimized ? "320vh" : "280vh"}
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
