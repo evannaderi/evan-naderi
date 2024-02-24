@@ -26,7 +26,7 @@ const Navbar = () => {
 
       {/* Navigation items on the right */}
       <Flex>
-        {['about', 'projects', 'experience', 'contact'].map((item, index) => (
+        {['about', 'projects', 'contact'].map((item, index) => (
           <Link key={item} href={`#${item}`} passHref>
             <Box as="a" cursor="pointer" ml={index === 0 ? 0 : 4}>
               {item.charAt(0).toUpperCase() + item.slice(1)}
