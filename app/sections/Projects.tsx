@@ -130,10 +130,6 @@ const Projects = () => {
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value);
-    };
-
   return (
     <Box
       id="projects"
