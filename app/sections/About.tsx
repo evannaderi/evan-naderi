@@ -29,7 +29,7 @@ const About = () => {
 
   // Trail animation for each line of Text
   const textLines = [
-    "Hey! I'm Evan, and I'm passionate about utilizing AI and technology to help improve people's lives\n.",
+    "Hey! I'm Evan, and I'm passionate about utilizing AI and technology to help improve people's lives.",
     "I'm currently a third year Computer Science student at UCF,",
     "and I work at the S.M.A.R.T. lab at the Institute of Modelling and Simulation where I do Software Development/AI work.",
     "Scroll to see some of my projects!",
