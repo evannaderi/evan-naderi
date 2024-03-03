@@ -1,12 +1,13 @@
 // evan-naderi/app/sections/About.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import { Box, Container, Heading, Text, useMediaQuery } from '@chakra-ui/react';
 import colors from '../../theme/theme';
 import { useSpring, animated, useTrail } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import Chatbot from './Chatbot';
+import axios from 'axios';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -47,6 +48,22 @@ const About = () => {
     delay: 200,
     config: { mass: 5, tension: 2000, friction: 200 },
   });
+
+  useEffect(() => {
+    // Replace 'your-endpoint-url' with the actual URL of the endpoint you want to call
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('/api/sentiment', { input: "this is a test" });
+        console.log(response.data);
+        // Handle the data from the response here
+        console.log("model loading");
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Box

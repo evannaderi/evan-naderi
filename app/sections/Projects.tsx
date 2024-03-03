@@ -2,13 +2,14 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Heading, SimpleGrid, Text, useMediaQuery, Button, Badge } from '@chakra-ui/react';
+import { Box, Container, Heading, SimpleGrid, Text, useMediaQuery, Button, Badge, Spacer } from '@chakra-ui/react';
 import colors from '../../theme/theme';
 import { useTrail, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import { Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from 'react';
+import SentimentAnalysisInput from '../components/SentimentAnalysisInput';
 
 const Projects = () => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -62,6 +63,7 @@ const Projects = () => {
       skills: ['Pytorch', 'Sklearn', 'Flask', 'Heroku', 'Hugging Face'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
+      component: SentimentAnalysisInput,
     },
     {
       title: 'Metadash Prototype',
@@ -133,7 +135,7 @@ const Projects = () => {
   return (
     <Box
       id="projects"
-      height={isMinimized ? "320vh" : "280vh"}
+      height={isMinimized ? "380vh" : "340vh"}
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
@@ -154,6 +156,10 @@ const Projects = () => {
                   {projects[index].description}
                 </Text> 
                 {renderSkills(projects[index].skills)}
+                <Spacer />
+                {
+                  projects[index].component ? React.createElement(projects[index].component) : null
+                }
                 {projects[index].link && (
                     <Button
                       mt={4}

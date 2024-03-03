@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import './styles/SentimentAnalyzer.css';
+import { Spacer } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+
 
 const SentimentAnalyzer = () => {
   const [inputText, setInputText] = useState('');
@@ -22,7 +25,9 @@ const SentimentAnalyzer = () => {
 
   return (
     <div className="sentiment-analyzer">
+      <Spacer />
       <h2>Sentiment Analyzer</h2>
+      <Spacer />
       <textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
