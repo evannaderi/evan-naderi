@@ -109,7 +109,7 @@ const SentimentAnalysisInput: React.FC = () => {
   };
 
   return (
-    <VStack spacing={4} align="stretch" p={5} bg="transparent" minHeight="40vh">
+    <VStack spacing={4} align="stretch" p={5} bg="transparent" minHeight="50vh">
       <Textarea
         placeholder="Enter text to analyze sentiment..."
         value={text}

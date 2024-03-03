@@ -135,7 +135,7 @@ const Projects = () => {
   return (
     <Box
       id="projects"
-      height={isMinimized ? "380vh" : "340vh"}
+      height={isMinimized ? "380vh" : "324vh"}
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
@@ -158,8 +158,11 @@ const Projects = () => {
                 {renderSkills(projects[index].skills)}
                 <Spacer />
                 {
-                  projects[index].component ? React.createElement(projects[index].component) : null
+                  projects[index].component
+                    ? React.createElement(projects[index].component as React.ElementType)
+                    : null
                 }
+
                 {projects[index].link && (
                     <Button
                       mt={4}
