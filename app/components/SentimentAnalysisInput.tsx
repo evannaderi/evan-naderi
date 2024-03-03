@@ -1,6 +1,6 @@
 // evan-naderi/app/components/SentimentAnalysisInput.tsx
 import React, { useState, useMemo } from 'react';
-import { Box, Textarea, Button, Text, VStack, Badge, useToast, Spinner, Center, HStack, SimpleGrid } from '@chakra-ui/react';
+import { Box, Textarea, Button, Text, VStack, Badge, useToast, Spinner, Center, HStack, SimpleGrid, Select } from '@chakra-ui/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
@@ -14,6 +14,7 @@ const SentimentAnalysisInput: React.FC = () => {
   const [results, setResults] = useState<AnalysisResult[][]>([]);
   const [loading, setLoading] = useState(false);
   const [sentenceLoading, setSentenceLoading] = useState(false);
+  const [selectedModel, setSelectedModel] = useState('bert');
   const toast = useToast();
 
   const analyzeText = async () => {
@@ -30,7 +31,7 @@ const SentimentAnalysisInput: React.FC = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('/api/sentiment', { input: text });
+      const response = await axios.post('/api/sentiment', { input: text, model: selectedModel });
       setResults(response.data.result);
     } catch (error) {
       console.error('Error fetching analysis results:', error);
@@ -108,7 +109,7 @@ const SentimentAnalysisInput: React.FC = () => {
   };
 
   return (
-    <VStack spacing={4} align="stretch" p={5} bgGradient="linear(to-r, teal.300, blue.500)" minHeight="10vh">
+    <VStack spacing={4} align="stretch" p={5} bg="transparent" minHeight="40vh">
       <Textarea
         placeholder="Enter text to analyze sentiment..."
         value={text}
@@ -121,6 +122,11 @@ const SentimentAnalysisInput: React.FC = () => {
         </Button>
         <Button onClick={clearText} colorScheme="red">Clear</Button>
         <Button onClick={generateRandomSentence} isLoading={sentenceLoading} colorScheme="blue">Generate Random Sentence</Button>
+        <Select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} placeholder="Select model" colorScheme="blue" maxWidth="140px">
+            <option value="bert">BERT</option>
+            <option value="distilbert">DistilBERT</option>
+            <option value="roberta">RoBERTa</option>
+        </Select>
       </HStack>
       {resultDisplay}
     </VStack>

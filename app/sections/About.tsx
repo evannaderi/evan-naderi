@@ -53,10 +53,12 @@ const About = () => {
     // Replace 'your-endpoint-url' with the actual URL of the endpoint you want to call
     const fetchData = async () => {
       try {
-        const response = await axios.post('/api/sentiment', { input: "this is a test" });
+        const response = await axios.post('/api/sentiment', { input: "this is a test", model: "bert"});
+        const response2 = await axios.post('/api/sentiment', { input: "this is a test", model: "distilbert"});
+        const response3 = await axios.post('/api/sentiment', { input: "this is a test", model: "roberta"});
         console.log(response.data);
         // Handle the data from the response here
-        console.log("model loading");
+        console.log("models loading");
       } catch (error) {
         console.error("Error fetching data: ", error);
       }

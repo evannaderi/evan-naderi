@@ -1,4 +1,5 @@
 import axios from 'axios';
+                    
 
 export async function POST(request: Request) {
     try {
@@ -6,11 +7,19 @@ export async function POST(request: Request) {
         console.log('data:', data);
         console.log('data.input:', data.input)
         const input = data.input;
+        const model = data.model;
+        
+        // Define the type of modelLinks
+        const modelLinks: Record<string, string> = { 
+            'distilbert': 'https://api-inference.huggingface.co/models/evannaderi/distilbert-base-uncased-finetuned-emotion', 
+            'bert': 'https://api-inference.huggingface.co/models/evannaderi/bert-base-uncased-finetuned-emotion', 
+            'roberta': 'https://api-inference.huggingface.co/models/evannaderi/roberta-base-finetuned-emotion' 
+        };
         
         // send post request to HF inference API
         const result = await axios({
             method: 'POST',
-            url: 'https://api-inference.huggingface.co/models/evannaderi/distilbert-base-uncased-finetuned-emotion',
+            url: modelLinks[model],
             headers: { Authorization: 'Bearer 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' },
             data: JSON.stringify({ inputs: input })
         });
