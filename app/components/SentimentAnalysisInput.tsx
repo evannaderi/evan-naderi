@@ -37,7 +37,7 @@ const SentimentAnalysisInput: React.FC = () => {
       console.error('Error fetching analysis results:', error);
       toast({
         title: 'Error',
-        description: "Failed to fetch analysis results.",
+        description: "Please wait one moment while this model loads and try again.",
         status: 'error',
         duration: 3000,
         isClosable: true,
