@@ -9,13 +9,16 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from 'react';
+import { extendTheme } from '@chakra-ui/react';
 import SentimentAnalysisInput from '../components/SentimentAnalysisInput';
+
+
 
 const Projects = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: false, // Only trigger the animation once when the projects come into view
-    threshold: 0.25, // Trigger when 10% of the projects section is in view
+    threshold: isMinimized ? 0.15 : 0.25, // Trigger when 10% of the projects section is in view
   });
 
   const projects = [
@@ -135,7 +138,7 @@ const Projects = () => {
   return (
     <Box
       id="projects"
-      height={isMinimized ? "380vh" : "324vh"}
+      height={isMinimized ? "400vh" : "324vh"}
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
@@ -150,7 +153,14 @@ const Projects = () => {
         <SimpleGrid columns={{ sm: 1, md: 1 }} spacing={10} ref={ref}>
           {trail.map((animation, index) => (
             <animated.div key={projects[index].title} style={animation}>
-              <Box boxShadow="md" p="6" rounded="md" bg={colors.cream}>
+              <Box
+                boxShadow="md"
+                p={{ base: '4', md: '6' }}
+                rounded="md"
+                bg={colors.cream}
+                maxWidth={ isMinimized ? "85%" : "100%" }
+                overflow="hidden"
+              >
                 <Heading as="h3" size="md" mb={4}>{projects[index].title}</Heading>
                 <Text fontSize="md" mb={4}>
                   {projects[index].description}

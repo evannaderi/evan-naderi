@@ -3,6 +3,13 @@ import React, { useState, useMemo } from 'react';
 import { Box, Textarea, Button, Text, VStack, Badge, useToast, Spinner, Center, HStack, SimpleGrid, Select } from '@chakra-ui/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { extendTheme } from '@chakra-ui/react';
+
+const theme = extendTheme({
+  fontSizes: {
+    'xxs': '0.625rem', // Equivalent to 10px
+  },
+});
 
 interface AnalysisResult {
   label: string; // 'Joy', 'Anger', etc.
@@ -117,12 +124,12 @@ const SentimentAnalysisInput: React.FC = () => {
         bg="whiteAlpha.900"
       />
       <HStack>
-        <Button onClick={analyzeText} isLoading={loading} colorScheme="teal" loadingText="Analyzing">
+        <Button onClick={analyzeText} isLoading={loading} colorScheme="teal" loadingText="Analyzing" fontSize={["xs", "md"]} >
           Analyze
         </Button>
-        <Button onClick={clearText} colorScheme="red">Clear</Button>
-        <Button onClick={generateRandomSentence} isLoading={sentenceLoading} colorScheme="blue">Generate Random Sentence</Button>
-        <Select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} placeholder="Select model" colorScheme="blue" maxWidth="140px">
+        <Button onClick={clearText} colorScheme="red" fontSize={["xs", "md"]}>Clear</Button>
+        <Button onClick={generateRandomSentence} isLoading={sentenceLoading} colorScheme="blue" fontSize={["xs", "md"]}>Random</Button>
+        <Select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} placeholder="Select model" colorScheme="blue" maxWidth="140px" fontSize={["xs", "md"]}>
             <option value="bert">BERT</option>
             <option value="distilbert">DistilBERT</option>
             <option value="roberta">RoBERTa</option>
