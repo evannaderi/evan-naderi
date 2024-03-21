@@ -86,7 +86,7 @@ const About = () => {
         </animated.div>
         {textAnimation.map((props, index) => (
           <animated.div key={index} style={props}>
-            <Text fontSize="24" lineHeight="tall">
+            <Text fontSize={["l", "xl"]} lineHeight="tall">
               {textLines[index]}
             </Text>
           </animated.div>

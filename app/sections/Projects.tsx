@@ -18,7 +18,7 @@ const Projects = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: false, // Only trigger the animation once when the projects come into view
-    threshold: isMinimized ? 0.15 : 0.25, // Trigger when 10% of the projects section is in view
+    threshold: isMinimized ? 0.15 : 0.23, // Trigger when 10% of the projects section is in view
   });
 
   const projects = [
@@ -41,6 +41,17 @@ const Projects = () => {
       hoverBg: colors.sunset,
     },
     {
+      title: 'Sentiment Analysis Classifier',
+      description: 'Fine-tuned DistilBERT, BERT, and RoBERTa for sentiment analysis, achieving significant performance improvements with a 93% accuracy rate on the Hugging Face "emotion" dataset.',
+      link: '', // No link provided for this project,
+      github: '', // No link provided for this project
+      skills: ['Pytorch', 'Sklearn', 'Flask', 'Heroku', 'Hugging Face'], 
+      bg: colors.liver,
+      hoverBg: colors.sunset,
+      component: SentimentAnalysisInput,
+      huggingface: 'https://huggingface.co/evannaderi/distilbert-base-uncased-finetuned-emotion',
+    },
+    {
       title: 'Sched - Employee Scheduling',
       description: 'A comprehensive employee scheduling web and mobile application enabling dynamic shift scheduling and real-time updates.',
       link: '',
@@ -57,16 +68,6 @@ const Projects = () => {
       skills: ['LangChain', 'Python', 'PostgreSQL', 'OpenAI', 'GCP'], 
       bg: colors.liver,
       hoverBg: colors.sunset,
-    },
-    {
-      title: 'Sentiment Analysis Classifier',
-      description: 'Fine-tuned DistilBERT, BERT, and RoBERTa for sentiment analysis, achieving significant performance improvements with a 93% accuracy rate on the Hugging Face "emotion" dataset.',
-      link: '', // No link provided for this project,
-      github: '', // No link provided for this project
-      skills: ['Pytorch', 'Sklearn', 'Flask', 'Heroku', 'Hugging Face'], 
-      bg: colors.liver,
-      hoverBg: colors.sunset,
-      component: SentimentAnalysisInput,
     },
     {
       title: 'Metadash Prototype',
@@ -138,7 +139,7 @@ const Projects = () => {
   return (
     <Box
       id="projects"
-      height={isMinimized ? "400vh" : "324vh"}
+      height={isMinimized ? "400vh" : "332vh"}
       bg={colors.gradientExample}
       color={colors.liver}
       scrollMarginTop="10vh"
@@ -200,6 +201,20 @@ const Projects = () => {
                       rel="noopener noreferrer"
                     >
                       Github <ExternalLinkIcon mx='2px' />
+                    </Button>
+                )}
+                {projects[index].huggingface && (
+                    <Button
+                      mt={4}
+                      bg={projects[index].bg}
+                      color="white"
+                      _hover={{ bg: projects[index].hoverBg }}
+                      as="a"
+                      href={projects[index].huggingface}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      HuggingFace <ExternalLinkIcon mx='2px' />
                     </Button>
                 )}
               </Box>

@@ -143,14 +143,14 @@ const Chatbot: React.FC = () => {
             {!isMinimized && (
                 <>
                     {/* All your existing chatbot UI elements go here */}
-                    <Text fontSize="xl" fontWeight="bold" textAlign="center">
+                    <Text fontSize={["md", "xl"]} fontWeight="bold" textAlign="center">
                         Chat with Resume
                         <Link href="/Evan_Naderi_resume.pdf" isExternal>
                             <ExternalLinkIcon mx="2px" />
                         </Link>
                     </Text>
-                    <Text fontSize="sm" fontWeight="bold" textAlign="center" color="gray.500" mt={-3}>
-                        Built with Langchain
+                    <Text fontSize={["xs", "md"]} fontWeight="bold" textAlign="center" color="gray.500" mt={-3}>
+                        Built with Langchain RAG
                     </Text>
                     <VStack ref={chatboxRef} flex={1} align="stretch" spacing={4} overflowY="auto">
                         {messages.map((message, index) => (
@@ -174,12 +174,15 @@ const Chatbot: React.FC = () => {
                             </Box>
                         )}
                     </VStack>
-                    <HStack>
-                        <Button colorScheme="orange" size="sm" onClick={() => sendPresetMessage('Tell me about Evan\'s experience.')}>Experience</Button>
-                        <Button colorScheme="orange" size="sm" onClick={() => sendPresetMessage('What skills does Evan have?')}>Skills</Button>
-                        <Button colorScheme="orange" size="sm" onClick={() => sendPresetMessage('Does Evan have any projects?')}>Projects</Button>
-                        <Button colorScheme="orange" size="sm" onClick={() => sendPresetMessage('What is Evan\'s education background?')}>Education</Button>
-                    </HStack>
+                    {!isMinimized &&
+                        <HStack>
+                            <Button colorScheme="orange" size="sm" fontSize={["xs", "md"]} onClick={() => sendPresetMessage('Tell me about Evan\'s experience.')}>Experience</Button>
+                            <Button colorScheme="orange" size="sm" fontSize={["xs", "md"]} onClick={() => sendPresetMessage('What skills does Evan have?')}>Skills</Button>
+                            <Button colorScheme="orange" size="sm" fontSize={["xs", "md"]} onClick={() => sendPresetMessage('Does Evan have any projects?')}>Projects</Button>
+                            <Button colorScheme="orange" size="sm" fontSize={["xs", "md"]} onClick={() => sendPresetMessage('What is Evan\'s education background?')}>Education</Button>
+                        </HStack>
+                    }
+                    
                     <HStack>
                         <Input placeholder="Type your message here..." value={inputValue} onChange={handleInputChange} onKeyPress={handleKeyPress} />
                         <Button colorScheme="brown" bgColor={adjustedColors.buttonBg} color="white" onClick={() => handleSendMessage()}><Icon as={IoMdSend} /></Button>
