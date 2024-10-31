@@ -30,10 +30,10 @@ const About = () => {
 
   // Trail animation for each line of Text
   const textLines = [
-    "Hey! I'm Evan, and I'm passionate about utilizing AI and technology to help improve people's lives.",
-    "I'm currently a third year Computer Science student at UCF,",
-    "and I work at the S.M.A.R.T. lab at the Institute of Modelling and Simulation where I do Software Development/AI work.",
-    "Scroll to see some of my projects!",
+    "Hey! I'm Evan, and I'm passionate about software engineering and building innovative technology to improve people's lives.",
+    "I'm a Computer Science student at UCF, where I am writing a thesis on building agentic tutoring systems.",
+    "I work as an AI Engineer Intern for Universal, and I also work as a software engineer for my UCF's dev team, Techrangers.",
+    "Scroll to see some of my personal projects!",
   ];
 
   const textAnimation = useTrail(textLines.length, {

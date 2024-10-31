@@ -9,17 +9,29 @@ import { useInView } from 'react-intersection-observer';
 
 const Experience = () => {
   const experiences = [
-    {
-      title: 'Software Development/AI Intern/Researcher',
-      place: 'S.M.A.R.T. Lab, UCF - May 2023 – Present',
-      details: [
-        'Utilized Angular, Nest.js, and D3.js to develop MetaDash, an intuitive multimodal data visualization app.',
-        'Independently developed a proof-of-concept prototype dashboard for Metadash using Dash, Plotly, and Flask.',
-        'Automated data processing by creating Python scripts with Pandas, conserving ~15 hours of hands-on work.',
-        'Engaged in an Honors Thesis on the application and optimization of machine learning algorithms for data modelling of students within an AI tutoring system, employing data science, statistics, and NLP methodologies.',
-      ],
-    },
-    // Add more experience entries here
+      {
+        title: 'AI Engineer Intern',
+        place: 'Universal Destinations and Experiences - Universal Creative, Orlando, FL - Sept 2024 – Present',
+        details: [
+        ],
+      },
+      {
+        title: 'Software Engineer',
+        place: 'UCF Center for Distributed Learning, Orlando, FL - May 2024 – Present',
+        details: [
+          'Replaced an outdated accessibility tool with an optimized solution using AWS Lambda and Chromium, reducing production costs and improving scalability.',
+          'Implemented API endpoints with Node.js and Express, improving internal systems and data flow efficiency.',
+          'Collaborated on backend services and database management using MongoDB, Mongoose, and RESTful APIs.',
+        ],
+      },
+      {
+        title: 'Machine Learning Researcher',
+        place: 'S.M.A.R.T. Lab, UCF - May 2023 – Present',
+        details: [
+          'Utilized Angular, Nest.js, and D3.js to develop MetaDash, an intuitive multimodal data visualization app.',
+          'Independently developed a proof-of-concept prototype dashboard for MetaDash using Dash, Plotly, and Flask.',
+          'Automated data processing by creating Python scripts with Pandas, conserving ~15 hours of hands-on work.',
+          'Conducted an Honors Thesis on the application and optimization of machine learning algorithms for data modeling of students within
   ];
 
   const [ref, inView] = useInView({
