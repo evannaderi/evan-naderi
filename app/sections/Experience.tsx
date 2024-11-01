@@ -31,7 +31,9 @@ const Experience = () => {
           'Utilized Angular, Nest.js, and D3.js to develop MetaDash, an intuitive multimodal data visualization app.',
           'Independently developed a proof-of-concept prototype dashboard for MetaDash using Dash, Plotly, and Flask.',
           'Automated data processing by creating Python scripts with Pandas, conserving ~15 hours of hands-on work.',
-          'Conducted an Honors Thesis on the application and optimization of machine learning algorithms for data modeling of students within
+          'Conducted an Honors Thesis on the application and optimization of machine learning algorithms for data modeling of students within'
+        ],
+    }
   ];
 
   const [ref, inView] = useInView({
